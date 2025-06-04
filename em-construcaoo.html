@@ -2,8 +2,8 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Conta em Construção - CWJ Consultoria</title>
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.3.0/tsparticles.bundle.min.js"></script>
+  <title>Conta em Construção - CWJ</title>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <style>
     html, body {
       margin: 0;
@@ -15,7 +15,7 @@
       overflow: hidden;
     }
 
-    #tsparticles {
+    #particles-js {
       position: absolute;
       width: 100%;
       height: 100%;
@@ -71,7 +71,7 @@
 <body>
 
 <!-- Fundo animado -->
-<div id="tsparticles"></div>
+<div id="particles-js"></div>
 
 <!-- Conteúdo -->
 <div class="content">
@@ -84,40 +84,48 @@
 
 <!-- Configuração das partículas -->
 <script>
-  tsParticles.load("tsparticles", {
-    background: {
-      color: "#0f172a"
-    },
-    fpsLimit: 60,
+  particlesJS("particles-js", {
     particles: {
+      number: {
+        value: 60,
+        density: { enable: true, value_area: 800 }
+      },
       color: { value: "#38bdf8" },
-      links: {
+      shape: { type: "circle" },
+      opacity: {
+        value: 0.4,
+        random: false
+      },
+      size: {
+        value: 3,
+        random: true
+      },
+      line_linked: {
         enable: true,
+        distance: 150,
         color: "#38bdf8",
-        distance: 120,
         opacity: 0.4,
         width: 1
       },
       move: {
         enable: true,
-        speed: 1,
+        speed: 1.5,
         direction: "none",
-        outModes: { default: "bounce" }
-      },
-      number: {
-        value: 60
-      },
-      opacity: {
-        value: 0.4
-      },
-      shape: {
-        type: "circle"
-      },
-      size: {
-        value: { min: 1, max: 3 }
+        random: false,
+        straight: false,
+        out_mode: "bounce",
+        bounce: true
       }
     },
-    detectRetina: true
+    interactivity: {
+      detect_on: "canvas",
+      events: {
+        onhover: { enable: true, mode: "grab" },
+        onclick: { enable: false },
+        resize: true
+      }
+    },
+    retina_detect: true
   });
 </script>
 
