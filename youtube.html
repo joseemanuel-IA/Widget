@@ -49,6 +49,11 @@
     .footer{padding:12px 20px;border-top:1px solid var(--stroke);color:#94a3b8;font-size:12px}
     @media (max-width:480px){.container{margin:18px auto}.title{font-size:16px}}
   </style>
+<style>
+  /* modo compacto para widgets estreitos: esconde header/body/footer e deixa só o player */
+  body.compact .header, body.compact .body, body.compact .footer { display:none; }
+  body.compact .card { border-radius:10px; }
+</style>
 </head>
 <body>
   <div class="container">
@@ -80,5 +85,19 @@
       <div class="footer">Pronto para iFrame no Kommo (Custom Widget). Sem dependências externas.</div>
     </div>
   </div>
+<script>
+(function () {
+  const p = new URLSearchParams(location.search);
+  const v = document.querySelector('.video');
+  // compact=1 -> esconde header/body/footer
+  if (p.get('compact') === '1') document.body.classList.add('compact');
+  // ratio=16:9 ou 4:3 etc.
+  const ratio = p.get('ratio');
+  if (ratio) v.style.aspectRatio = ratio.replace(':', ' / ');
+  // h=360 -> força altura em px (ignora aspect-ratio)
+  const h = parseInt(p.get('h') || '', 10);
+  if (!isNaN(h)) { v.style.aspectRatio = 'auto'; v.style.height = h + 'px'; }
+})();
+</script>
 </body>
 </html>
