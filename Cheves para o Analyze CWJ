@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=200,height=200">
+  <title>Widget CRM</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      background: #f9fafb;
+      margin: 0;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      box-sizing: border-box;
+    }
+    .card {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .item {
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .label {
+      font-weight: bold;
+      color: #374151;
+      margin-right: 5px;
+    }
+    .value {
+      word-break: break-all;
+      color: #111827;
+      font-size: 11px;
+      flex: 1;
+      margin-right: 5px;
+    }
+    button {
+      font-size: 10px;
+      padding: 2px 5px;
+      border: none;
+      border-radius: 4px;
+      background: #2563eb;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #1e40af;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="item">
+      <div>
+        <div class="label">Secret Key:</div>
+        <div class="value" id="secret">3vHOOMAkdykZv37xAuUjCu8vZMlL7bqhA90Axdw0JPgQgzsmlPdUKRvdTem8UCCP</div>
+      </div>
+      <button onclick="copyToClipboard('secret')">Copiar</button>
+    </div>
+    <div class="item">
+      <div>
+        <div class="label">Nome:</div>
+        <div class="value" id="nome">cwjwxperformance</div>
+      </div>
+      <button onclick="copyToClipboard('nome')">Copiar</button>
+    </div>
+    <div class="item">
+      <div>
+        <div class="label">UUID:</div>
+        <div class="value" id="uuid">9f141d78-db8b-46a7-86c7-6fa3417366e1</div>
+      </div>
+      <button onclick="copyToClipboard('uuid')">Copiar</button>
+    </div>
+    <div class="item">
+      <div>
+        <div class="label">Callback:</div>
+        <div class="value" id="callback">https://danielsolda.github.io/kommo-insight-hub/oauth/callback</div>
+      </div>
+      <button onclick="copyToClipboard('callback')">Copiar</button>
+    </div>
+  </div>
+
+  <script>
+    function copyToClipboard(id) {
+      const text = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Copiado: " + text);
+      });
+    }
+  </script>
+</body>
+</html>
