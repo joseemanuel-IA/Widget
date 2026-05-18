@@ -4,16 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Matriz</title>
-
   <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       background: #000;
-      margin: 0;
       height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    .wrapper {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      animation: fadeInDown 0.9s ease both;
     }
 
     .title-3d {
@@ -22,20 +29,77 @@
       letter-spacing: 2px;
       color: #ffffff;
       text-transform: uppercase;
-
-      /* efeito 3D */
       text-shadow:
         1px 1px 0 #0b5cff,
         2px 2px 0 #0b5cff,
         3px 3px 0 #0b5cff,
         4px 4px 0 #083d9e,
         6px 6px 12px rgba(0,0,0,0.8);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-8px); }
+    }
+
+    .arrow-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      animation: fadeInDown 0.9s ease both;
+    }
+
+    .arrow-chevron {
+      width: 28px;
+      height: 14px;
+      position: relative;
+      animation: bounce 1.4s ease-in-out infinite;
+    }
+    .arrow-chevron:nth-child(2) { animation-delay: 0.18s; opacity: 0.6; }
+    .arrow-chevron:nth-child(3) { animation-delay: 0.36s; opacity: 0.3; }
+
+    .arrow-chevron::before,
+    .arrow-chevron::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 16px;
+      height: 3px;
+      background: #0b5cff;
+      border-radius: 2px;
+    }
+    .arrow-chevron::before {
+      left: 0;
+      transform: rotate(40deg);
+      transform-origin: left center;
+    }
+    .arrow-chevron::after {
+      right: 0;
+      transform: rotate(-40deg);
+      transform-origin: right center;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(5px); }
     }
   </style>
 </head>
 <body>
-
-  <div class="title-3d">Matriz</div>
-
+  <div class="wrapper">
+    <div class="title-3d">Matriz</div>
+    <div class="arrow-wrapper">
+      <div class="arrow-chevron"></div>
+      <div class="arrow-chevron"></div>
+      <div class="arrow-chevron"></div>
+    </div>
+  </div>
 </body>
 </html>
